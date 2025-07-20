@@ -2,7 +2,7 @@
 
 namespace Shop.Domain.ProductAgg;
 
-internal class SeoData : BaseValueObject
+public class SeoData : BaseValueObject
 {
     private SeoData()
     {

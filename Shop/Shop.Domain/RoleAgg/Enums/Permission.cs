@@ -1,6 +1,6 @@
 ﻿namespace Shop.Domain.RoleAgg.Enums;
 
-internal enum Permission
+public enum Permission
 {
     PanelAdmin,
     EditProfile,

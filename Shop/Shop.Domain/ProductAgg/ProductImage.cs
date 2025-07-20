@@ -7,7 +7,7 @@ using Common.Domain;
 
 namespace Shop.Domain.ProductAgg
 {
-    internal class ProductImage : BaseEntity
+    public class ProductImage : BaseEntity
     {
         public ProductImage(string title, string imageName)
         {

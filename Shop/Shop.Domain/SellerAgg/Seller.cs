@@ -10,7 +10,7 @@ using Shop.Domain.SellerAgg.Enums;
 
 namespace Shop.Domain.SellerAgg
 {
-    internal class Seller : AggregateRoot
+    public class Seller : AggregateRoot
     {
         public Seller(string shopName, string nationalCode, SellerStatus status)
         {

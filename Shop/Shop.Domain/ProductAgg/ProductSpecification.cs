@@ -7,7 +7,7 @@ using Common.Domain;
 
 namespace Shop.Domain.ProductAgg
 {
-    internal class ProductSpecification : BaseEntity
+    public class ProductSpecification : BaseEntity
     {
         public ProductSpecification(string key, string value)
         {

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.Domain.ProductAgg.Services
+namespace Shop.Domain.CategoryAgg.Services
 {
-    public interface IDomainProductService
+    public interface IDomainCategoryService
     {
-        bool SlugIsExist(string slug);
+        bool IsSlugExist(string slug);
     }
 }

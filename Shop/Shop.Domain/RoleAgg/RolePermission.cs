@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shop.Domain.RoleAgg
 {
-    internal class RolePermission
+    public class RolePermission
     {
         public long RoleId { get; internal set; }
         public Permission Permission { get; private set; }

@@ -8,7 +8,7 @@ using Common.Domain.Exceptions;
 
 namespace Shop.Domain.SellerAgg
 {
-    internal class InventoryItem : BaseEntity
+    public class InventoryItem : BaseEntity
     {
         public InventoryItem(int count, int price)
         {

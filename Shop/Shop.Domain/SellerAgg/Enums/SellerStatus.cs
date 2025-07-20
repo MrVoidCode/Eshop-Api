@@ -1,6 +1,6 @@
 ﻿namespace Shop.Domain.SellerAgg.Enums;
 
-internal enum SellerStatus
+public enum SellerStatus
 {
     New,
     Accepted,

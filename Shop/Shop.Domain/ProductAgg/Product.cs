@@ -10,7 +10,7 @@ using Shop.Domain.ProductAgg.Services;
 
 namespace Shop.Domain.ProductAgg
 {
-    internal class Product : AggregateRoot
+    public class Product : AggregateRoot
     {
         
         public string Title { get; private set; }
