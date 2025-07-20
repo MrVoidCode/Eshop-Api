@@ -10,4 +10,8 @@
     <ProjectReference Include="..\..\Common\Common.Domain\Common.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ProductAgg\Enums\" />
+  </ItemGroup>
+
 </Project>
