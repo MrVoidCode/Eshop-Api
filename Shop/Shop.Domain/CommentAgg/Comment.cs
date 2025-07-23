@@ -33,7 +33,7 @@ namespace Shop.Domain.CommentAgg
             LastUpdate = DateTime.Now;
         }
 
-        public void SetStatus(CommentStatus status)
+        public void ChangeStatus(CommentStatus status)
         {
             Status = status;
         }
