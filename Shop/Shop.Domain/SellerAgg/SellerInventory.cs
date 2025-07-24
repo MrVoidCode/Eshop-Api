@@ -8,9 +8,9 @@ using Common.Domain.Exceptions;
 
 namespace Shop.Domain.SellerAgg
 {
-    public class InventoryItem : BaseEntity
+    public class SellerInventory : BaseEntity
     {
-        public InventoryItem(int count, int price)
+        public SellerInventory(int count, int price)
         {
             if (count < 0 || price < 0)
             {

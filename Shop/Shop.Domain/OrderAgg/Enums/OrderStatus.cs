@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shop.Domain.OrderAgg.Enums
 {
-    internal enum OrderStatus
+    public enum OrderStatus
     {
         Pending,
         Finally,

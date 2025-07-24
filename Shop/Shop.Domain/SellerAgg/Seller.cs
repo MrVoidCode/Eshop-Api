@@ -23,7 +23,7 @@ namespace Shop.Domain.SellerAgg
         public string NationalCode { get; private set; }
         public SellerStatus Status { get; private set; }
         public DateTime LastUpdate { get; internal set; }
-        public List<InventoryItem> InventoryItems { get; private set; }
+        public List<SellerInventory> SellerInventoryItems { get; private set; }
 
         public void Guard(string shopName, string nationalCode)
         {
@@ -43,14 +43,14 @@ namespace Shop.Domain.SellerAgg
             LastUpdate = DateTime.Now;
         }
 
-        public void AddInventory(InventoryItem newInventoryItem)
+        public void AddInventory(SellerInventory newInventoryItem)
         {
-            if (InventoryItems.Any(c => c.ProductId == newInventoryItem.ProductId))
+            if (SellerInventoryItems.Any(c => c.ProductId == newInventoryItem.ProductId))
             {
                 throw new InvalidDomainDataException("کالا در موجودی شما وجود دارد");
 
             }
-            InventoryItems.Add(newInventoryItem);
+            SellerInventoryItems.Add(newInventoryItem);
         }
 
         public void ChangeStatus(SellerStatus status)
@@ -59,24 +59,24 @@ namespace Shop.Domain.SellerAgg
             LastUpdate = DateTime.Now;
         }
 
-        public void EditInventory(long productId, InventoryItem newInventoryItem)
+        public void EditInventory(long productId, SellerInventory newInventoryItem)
         {
-            var oldInventoryItem = InventoryItems.FirstOrDefault(c => c.ProductId == productId);
+            var oldInventoryItem = SellerInventoryItems.FirstOrDefault(c => c.ProductId == productId);
             if (oldInventoryItem == null)
             {
                 throw new InvalidDomainDataException("کالا وارد شده موجود نمی باشد");
             }
-            InventoryItems.Remove(oldInventoryItem);
-            InventoryItems.Add(newInventoryItem);
+            SellerInventoryItems.Remove(oldInventoryItem);
+            SellerInventoryItems.Add(newInventoryItem);
         }
         public void DeleteInventory(long productId)
         {
-            var InventoryItem = InventoryItems.FirstOrDefault(c => c.ProductId == productId);
+            var InventoryItem = SellerInventoryItems.FirstOrDefault(c => c.ProductId == productId);
             if (InventoryItem == null)
             {
                 throw new InvalidDomainDataException("کالا وارد شده موجود نمی باشد");
             }
-            InventoryItems.Remove(InventoryItem);
+            SellerInventoryItems.Remove(InventoryItem);
         }
 
     }

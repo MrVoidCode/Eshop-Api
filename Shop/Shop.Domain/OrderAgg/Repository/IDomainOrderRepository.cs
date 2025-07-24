@@ -7,7 +7,8 @@ using Common.Domain.Repository;
 
 namespace Shop.Domain.OrderAgg.Repository
 {
-    internal interface IDomainOrderRepository : IBaseRepository<Order>
+    public interface IDomainOrderRepository : IBaseRepository<Order>
     {
+        Task<Order> GetCurrentOrderById(long userId);
     }
 }

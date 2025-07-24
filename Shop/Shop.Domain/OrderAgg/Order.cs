@@ -14,7 +14,7 @@ using Shop.Domain.UserAgg;
 
 namespace Shop.Domain.OrderAgg
 {
-    internal class Order : AggregateRoot
+    public class Order : AggregateRoot
     {
         private Order()
         {
@@ -51,33 +51,68 @@ namespace Shop.Domain.OrderAgg
         public OrderAddress? Address { get; private set; }
         public List<OrderItem> Items { get; private set; }
 
+        public void ChangeOrderGuard()
+        {
+            if (Status != OrderStatus.Pending)
+            {
+                throw new InvalidDomainDataException("امکان تغییر محصول در این سفارش وجود ندارد");
+            }
+        }
 
         public void AddItem(OrderItem item)
         {
+            ChangeOrderGuard();
+            var oldItem = Items.FirstOrDefault(c => c.InventoryId == item.InventoryId);
+            if (oldItem != null)
+            {
+                oldItem.ChangeCount(oldItem.Count + ItemCount);
+                return;
+            }
+
             Items.Add(item);
         }
 
         public void RemoveItem(long orderItemId)
         {
+            ChangeOrderGuard();
             var oldOrder = Items.FirstOrDefault(c => c.Id == orderItemId);
             if (oldOrder != null)
             {
                 Items.Remove(oldOrder);
             }
-
-            
         }
+
         public void ChangeCountItem(long orderItemId, int newCount)
         {
+            ChangeOrderGuard();
             var currentOrder = Items.FirstOrDefault(c => c.Id == orderItemId);
             if (currentOrder != null)
             {
                 currentOrder.ChangeCount(newCount);
             }
         }
+        public void DecreaseCountItem(long orderItemId, int newCount)
+        {
+            ChangeOrderGuard();
+            var currentOrder = Items.FirstOrDefault(c => c.Id == orderItemId);
+            if (currentOrder != null)
+            {
+                currentOrder.DecreaseCount(newCount);
+            }
+        }
+        public void IncreaseCountItem(long orderItemId, int newCount)
+        {
+            ChangeOrderGuard();
+            var currentOrder = Items.FirstOrDefault(c => c.Id == orderItemId);
+            if (currentOrder != null)
+            {
+                currentOrder.IncreaseCount(newCount);
+            }
+        }
 
         public void EditItem(long orderItemId, OrderItem orderItem)
         {
+            ChangeOrderGuard();
             var oldOrder = Items.FirstOrDefault(c => c.Id == orderItemId);
             if (oldOrder != null)
             {
@@ -93,19 +128,15 @@ namespace Shop.Domain.OrderAgg
         }
         public void AddDiscount(Discount discount)
         {
+            ChangeOrderGuard();
             Discount = discount;
         }
 
         public void Checkout(OrderAddress address)
         {
+            ChangeOrderGuard();
             Address = address;
 
         }
-    }
-
-    internal class ShippingMethod : BaseValueObject
-    {
-        public string ShippingTitle { get; private set; }
-        public int ShippingCost { get; private set; }
     }
 }

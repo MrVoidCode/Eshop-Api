@@ -1,15 +1,19 @@
-﻿using System;
+﻿using Common.Application;
+using Shop.Domain.OrderAgg;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.Domain.OrderAgg
+namespace Shop.Application.Orders.Checkout
 {
-    public class OrderAddress
+    internal class CheckoutOrderCommand : IBaseCommand
     {
-        public OrderAddress(string shire, string city, string postalCode, string name, string lastName, string postalAddress, string phoneNumber, string nationalCode)
+        public CheckoutOrderCommand(long userId, string shire, string city, string postalCode,
+            string name, string lastName, string postalAddress, string phoneNumber, string nationalCode, Order order)
         {
+            UserId = userId;
             Shire = shire;
             City = city;
             PostalCode = postalCode;
@@ -18,6 +22,7 @@ namespace Shop.Domain.OrderAgg
             PostalAddress = postalAddress;
             PhoneNumber = phoneNumber;
             NationalCode = nationalCode;
+            Order = order;
         }
         public long UserId { get; private set; }
         public string Shire { get; private set; }
