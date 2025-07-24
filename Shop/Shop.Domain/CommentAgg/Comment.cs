@@ -17,7 +17,7 @@ namespace Shop.Domain.CommentAgg
         public CommentStatus Status { get; private set; }
         public DateTime? LastUpdate { get; private set; }
 
-        public Comment(long userId, CommentStatus status, string text, long productId)
+        public Comment(long userId, string text, long productId)
         {
             NullOrEmptyDomainDataException.CheckString(text, nameof(text));
             UserId = userId;

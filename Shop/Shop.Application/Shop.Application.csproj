@@ -7,9 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Comments\Edit\" />
-    <Folder Include="Comments\Create\" />
-    <Folder Include="Comments\ChangeStatus\" />
     <Folder Include="Orders\Create\" />
     <Folder Include="Orders\Edit\" />
     <Folder Include="Orders\AddItem\" />

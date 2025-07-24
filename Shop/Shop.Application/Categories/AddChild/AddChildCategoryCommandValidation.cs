@@ -8,9 +8,9 @@ using FluentValidation;
 
 namespace Shop.Application.Categories.AddChild
 {
-    internal class AddChildCategoryValidation : AbstractValidator<AddChildCategoryCommand>
+    internal class AddChildCategoryCommandValidation : AbstractValidator<AddChildCategoryCommand>
     {
-        public AddChildCategoryValidation()
+        public AddChildCategoryCommandValidation()
         {
             RuleFor(c => c.Title)
                 .NotNull().NotEmpty().WithMessage(ValidationMessages.required("عنوان"));
