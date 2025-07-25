@@ -9,13 +9,13 @@ namespace Shop.Domain.ProductAgg
 {
     public class ProductImage : BaseEntity
     {
-        public ProductImage(string title, string imageName)
+        public ProductImage(string imageName, int sequence)
         {
-            Title = title;
+            Sequence = sequence;
             ImageName = imageName;
         }
         public long ProductId { get; private set; }
-        public string Title { get; private set; }
         public string ImageName { get; private set; }
+        public int Sequence { get; private set; }
     }
 }

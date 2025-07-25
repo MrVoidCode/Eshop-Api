@@ -27,7 +27,8 @@ namespace Shop.Domain.ProductAgg
         public Product(string title, string imageName, string description, long categoryId,
             long subCategoryId, long secondCategoryId, int price, string slug, SeoData seoData, IDomainProductService domainProductService)
         {
-            guard(title, imageName, description, categoryId, subCategoryId, secondCategoryId, price, slug, seoData, domainProductService);
+            NullOrEmptyDomainDataException.CheckString(imageName, nameof(imageName));
+            Guard(title, description, categoryId, subCategoryId, secondCategoryId, price, slug, seoData, domainProductService);
             Title = title;
             ImageName = imageName;
             Description = description;
@@ -39,11 +40,11 @@ namespace Shop.Domain.ProductAgg
             SeoData = seoData;
         }
 
-        public void guard(string title, string imageName, string description, long categoryId,
+        public void Guard(string title, string description, long categoryId,
             long subCategoryId, long secondCategoryId, int price, string slug, SeoData seoData, IDomainProductService domainProductService)
         {
             NullOrEmptyDomainDataException.CheckString(title, nameof(title));
-            NullOrEmptyDomainDataException.CheckString(imageName, nameof(imageName));
+            
             NullOrEmptyDomainDataException.CheckString(description, nameof(description));
             NullOrEmptyDomainDataException.CheckString(slug, nameof(slug));
             if (slug != Slug)
@@ -59,13 +60,12 @@ namespace Shop.Domain.ProductAgg
             }
         }
 
-        public void Edit(string title, string imageName, string description, long categoryId,
+        public void Edit(string title, string description, long categoryId,
             long subCategoryId, long secondCategoryId, int price, string slug, SeoData seoData, IDomainProductService domainProductService)
         {
-            guard(title, imageName, description, categoryId, subCategoryId, secondCategoryId, price, slug, seoData,domainProductService);
+            Guard(title, description, categoryId, subCategoryId, secondCategoryId, price, slug, seoData,domainProductService);
 
             Title = title;
-            ImageName = imageName;
             Description = description;
             CategoryId = categoryId;
             SubCategoryId = subCategoryId;
@@ -79,7 +79,12 @@ namespace Shop.Domain.ProductAgg
         {
             Images.Add(image);
         }
-        public void RemoveImage(long imageId)
+        public void SetImage(string imageName)
+        {
+            NullOrEmptyDomainDataException.CheckString(imageName, nameof(imageName));
+            ImageName = imageName;
+        }
+        public string RemoveImage(long imageId)
         {
             var image = Images.FirstOrDefault(c => c.Id == imageId);
             if (image == null)
@@ -88,6 +93,7 @@ namespace Shop.Domain.ProductAgg
             }
 
             Images.Remove(image);
+            return image.ImageName;
         }
         public void SetSpecification(List<ProductSpecification> specification)
         {
