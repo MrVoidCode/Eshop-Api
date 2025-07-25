@@ -28,13 +28,18 @@ namespace Shop.Domain.SiteEntities
             NullOrEmptyDomainDataException.CheckString(imageName, nameof(imageName));
         }
 
-        public void Edit(string link, string imageName, BannerPosition position)
+        public void Edit(string link,  BannerPosition position)
         {
-            Guard(link, imageName);
+            NullOrEmptyDomainDataException.CheckString(link, nameof(link));
             Link = link;
-            ImageName = imageName;
             Position = position;
         }
+        public void SetImage(string image)
+        {
+            NullOrEmptyDomainDataException.CheckString(image, nameof(image));
+            ImageName = image;
+        }
+        
     }
 
     public enum BannerPosition
