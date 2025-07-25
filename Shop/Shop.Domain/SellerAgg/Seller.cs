@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 using Common.Domain;
 using Common.Domain.Exceptions;
 using Shop.Domain.SellerAgg.Enums;
+using Shop.Domain.SellerAgg.Services;
 
 namespace Shop.Domain.SellerAgg
 {
     public class Seller : AggregateRoot
     {
-        public Seller(string shopName, string nationalCode, SellerStatus status)
+        public Seller(long userId, string shopName, string nationalCode, IDomainSellerService domainSellerService)
         {
+            UserIdDuplicateSellerChecker(userId, domainSellerService);
+            NationalCodeDuplicateSellerChecker(nationalCode, domainSellerService);
             Guard(shopName, nationalCode);
+            UserId = userId;
             ShopName = shopName;
             NationalCode = nationalCode;
         }
@@ -35,8 +39,30 @@ namespace Shop.Domain.SellerAgg
             }
         }
 
-        public void Edit(string shopName, string nationalCode, SellerStatus status)
+        public void UserIdDuplicateSellerChecker(long userId, IDomainSellerService domainSellerService)
         {
+            if (UserId != userId)
+            {
+                if (domainSellerService.UserIdIsExistInDataBase(userId))
+                {
+                    throw new InvalidDomainDataException("اطلاعات نا معتبر است");
+                }
+            }
+        }
+        public void NationalCodeDuplicateSellerChecker(string nationalCode, IDomainSellerService domainSellerService)
+        {
+            if (NationalCode != nationalCode)
+            {
+                if (domainSellerService.NationalCodeExistInDataBase(nationalCode))
+                {
+                    throw new InvalidDomainDataException("این کد ملی متعلق به شخصی دیگر است");
+                }
+            }
+        }
+
+        public void Edit(string shopName, string nationalCode, IDomainSellerService domainSellerService)
+        {
+            NationalCodeDuplicateSellerChecker(nationalCode, domainSellerService);
             Guard(shopName, nationalCode);
             ShopName = shopName;
             NationalCode = nationalCode;
@@ -59,24 +85,23 @@ namespace Shop.Domain.SellerAgg
             LastUpdate = DateTime.Now;
         }
 
-        public void EditInventory(long productId, SellerInventory newInventoryItem)
+        public void EditInventory(long inventoryId, int count, int price, int? discountPercentage)
         {
-            var oldInventoryItem = SellerInventoryItems.FirstOrDefault(c => c.ProductId == productId);
-            if (oldInventoryItem == null)
+            var currentInventory = SellerInventoryItems.FirstOrDefault(c => c.Id == inventoryId);
+            if (currentInventory == null)
             {
                 throw new InvalidDomainDataException("کالا وارد شده موجود نمی باشد");
             }
-            SellerInventoryItems.Remove(oldInventoryItem);
-            SellerInventoryItems.Add(newInventoryItem);
+            currentInventory.Edit(count, price, discountPercentage);
         }
-        public void DeleteInventory(long productId)
+        public void DeleteInventory(long inventoryId)
         {
-            var InventoryItem = SellerInventoryItems.FirstOrDefault(c => c.ProductId == productId);
-            if (InventoryItem == null)
+            var inventoryItem = SellerInventoryItems.FirstOrDefault(c => c.Id == inventoryId);
+            if (inventoryItem == null)
             {
                 throw new InvalidDomainDataException("کالا وارد شده موجود نمی باشد");
             }
-            SellerInventoryItems.Remove(InventoryItem);
+            SellerInventoryItems.Remove(inventoryItem);
         }
 
     }
