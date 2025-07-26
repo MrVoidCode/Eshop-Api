@@ -6,7 +6,7 @@ namespace Shop.Domain.UserAgg;
 
 public class Wallet :BaseEntity
 {
-    public Wallet(int price, WalletType type, string description, bool isFinally, DateTime finallyDate)
+    public Wallet(int price, WalletType type, string description, bool isFinally)
     {
         if (price < 500)
         {
@@ -17,7 +17,10 @@ public class Wallet :BaseEntity
         Type = type;
         Description = description;
         IsFinally = isFinally;
-        FinallyDate = finallyDate;
+        if (IsFinally == true)
+        {
+            FinallyDate = DateTime.Now;
+        }
     }
     public long UserId { get; internal set; }
     public int Price { get; set; }

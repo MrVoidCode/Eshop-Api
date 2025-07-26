@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Shop.Domain.UserAgg.Services
 {
-    internal interface IDomainUserService
+    public interface IDomainUserService
     {
         bool IsEmailExist(string email);
         bool IsPhoneExist(string phone);
+        
 
     }
 }
