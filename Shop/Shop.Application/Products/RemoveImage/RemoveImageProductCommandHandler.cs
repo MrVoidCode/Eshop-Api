@@ -7,10 +7,10 @@ namespace Shop.Application.Products.RemoveImage;
 
 internal class RemoveImageProductCommandHandler : IBaseCommandHandler<RemoveImageProductCommand>
 {
-    private readonly IDomainProductRepository _productRepository;
+    private readonly IProductDomainRepository _productRepository;
     private readonly IFileService _fileService;
 
-    public RemoveImageProductCommandHandler(IDomainProductRepository productRepository, IFileService fileService)
+    public RemoveImageProductCommandHandler(IProductDomainRepository productRepository, IFileService fileService)
     {
         _productRepository = productRepository;
         _fileService = fileService;

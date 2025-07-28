@@ -28,9 +28,9 @@ namespace Shop.Application.Sellers.EditInventory
     }
     internal class EditInventorySellerCommandHandler : IBaseCommandHandler<EditInventorySellerCommand>
     {
-        private readonly IDomainSellerRepository _repository;
+        private readonly ISellerDomainRepository _repository;
 
-        public EditInventorySellerCommandHandler(IDomainSellerRepository repository)
+        public EditInventorySellerCommandHandler(ISellerDomainRepository repository)
         {
             _repository = repository;
         }

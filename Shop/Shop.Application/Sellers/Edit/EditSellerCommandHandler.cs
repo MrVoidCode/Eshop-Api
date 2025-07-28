@@ -6,10 +6,10 @@ namespace Shop.Application.Sellers.Edit;
 
 internal class EditSellerCommandHandler : IBaseCommandHandler<EditSellerCommand>
 {
-    private readonly IDomainSellerRepository _repository;
+    private readonly ISellerDomainRepository _repository;
     private readonly IDomainSellerService _service;
 
-    public EditSellerCommandHandler(IDomainSellerRepository repository)
+    public EditSellerCommandHandler(ISellerDomainRepository repository)
     {
         _repository = repository;
     }

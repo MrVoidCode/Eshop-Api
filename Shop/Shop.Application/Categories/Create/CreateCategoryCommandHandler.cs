@@ -12,10 +12,10 @@ namespace Shop.Application.Categories.Create
 {
     internal class CreateCategoryCommandHandler : IBaseCommandHandler<CreateCategoryCommand>
     {
-        private readonly IDomainCategoryRepository _repository;
+        private readonly ICategoryDomainRepository _repository;
         private readonly IDomainCategoryService _service;
 
-        public CreateCategoryCommandHandler(IDomainCategoryRepository repository, IDomainCategoryService service)
+        public CreateCategoryCommandHandler(ICategoryDomainRepository repository, IDomainCategoryService service)
         {
             _repository = repository;
             _service = service;

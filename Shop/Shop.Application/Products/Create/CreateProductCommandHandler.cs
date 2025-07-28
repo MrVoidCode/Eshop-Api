@@ -9,11 +9,11 @@ namespace Shop.Application.Products.Create;
 
 internal class CreateProductCommandHandler : IBaseCommandHandler<CreateProductCommand>
 {
-    private readonly IDomainProductRepository _productRepository;
+    private readonly IProductDomainRepository _productRepository;
     private readonly IDomainProductService _productService;
     private readonly IFileService _fileService;
 
-    public CreateProductCommandHandler(IDomainProductRepository productRepository, IDomainProductService productService)
+    public CreateProductCommandHandler(IProductDomainRepository productRepository, IDomainProductService productService)
     {
         _productRepository = productRepository;
         _productService = productService;

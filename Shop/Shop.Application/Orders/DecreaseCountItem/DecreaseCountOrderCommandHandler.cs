@@ -5,9 +5,9 @@ namespace Shop.Application.Orders.DecreaseCount;
 
 internal class DecreaseCountOrderCommandHandler : IBaseCommandHandler<DecreaseCountOrderCommand>
 {
-    private readonly IDomainOrderRepository _repository;
+    private readonly IOrderDomainRepository _repository;
 
-    public DecreaseCountOrderCommandHandler(IDomainOrderRepository repository)
+    public DecreaseCountOrderCommandHandler(IOrderDomainRepository repository)
     {
         _repository = repository;
     }

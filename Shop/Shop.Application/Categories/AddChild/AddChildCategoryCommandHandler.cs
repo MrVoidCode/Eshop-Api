@@ -13,10 +13,10 @@ namespace Shop.Application.Categories.AddChild
 {
     internal class AddChildCategoryCommandHandler : IBaseCommandHandler<AddChildCategoryCommand>
     {
-        private readonly IDomainCategoryRepository _repository;
+        private readonly ICategoryDomainRepository _repository;
         private readonly IDomainCategoryService _service;
 
-        public AddChildCategoryCommandHandler(IDomainCategoryRepository repository, IDomainCategoryService service)
+        public AddChildCategoryCommandHandler(ICategoryDomainRepository repository, IDomainCategoryService service)
         {
             _repository = repository;
             _service = service;

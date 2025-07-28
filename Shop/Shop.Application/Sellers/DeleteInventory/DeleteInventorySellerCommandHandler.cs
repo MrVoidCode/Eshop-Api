@@ -5,9 +5,9 @@ namespace Shop.Application.Sellers.DeleteInventory;
 
 internal class DeleteInventorySellerCommandHandler : IBaseCommandHandler<DeleteInventorySellerCommand>
 {
-    private readonly IDomainSellerRepository _repository;
+    private readonly ISellerDomainRepository _repository;
 
-    public DeleteInventorySellerCommandHandler(IDomainSellerRepository repository)
+    public DeleteInventorySellerCommandHandler(ISellerDomainRepository repository)
     {
         _repository = repository;
     }

@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Domain.Repository;
 
-namespace Shop.Domain.OrderAgg.Repository
+namespace Shop.Domain.SiteEntities.Repository
 {
-    public interface IDomainOrderRepository : IBaseRepository<Order>
+    public interface ISliderDomainRepository : IBaseRepository<Slider>
     {
-        Task<Order> GetCurrentOrderById(long userId);
     }
 }

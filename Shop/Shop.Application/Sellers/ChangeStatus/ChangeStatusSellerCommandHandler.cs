@@ -5,9 +5,9 @@ namespace Shop.Application.Sellers.ChangeStatus;
 
 internal class ChangeStatusSellerCommandHandler : IBaseCommandHandler<ChangeStatusSellerCommand>
 {
-    private readonly IDomainSellerRepository _repository;
+    private readonly ISellerDomainRepository _repository;
 
-    public ChangeStatusSellerCommandHandler(IDomainSellerRepository repository)
+    public ChangeStatusSellerCommandHandler(ISellerDomainRepository repository)
     {
         _repository = repository;
     }

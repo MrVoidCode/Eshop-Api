@@ -7,7 +7,7 @@ using Common.Domain.Repository;
 
 namespace Shop.Domain.SiteEntities.Repository
 {
-    public interface IDomainSliderRepository : IBaseRepository<Slider>
+    public interface IBannerDomainRepository : IBaseRepository<Banner>
     {
     }
 }

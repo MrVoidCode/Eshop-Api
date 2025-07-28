@@ -7,7 +7,7 @@ namespace Shop.Application.SiteEntities.Slider.Create;
 
 internal class CreateSliderCommandHandler : IBaseCommandHandler<CreateSliderCommand>
 {
-    private readonly IDomainSliderRepository _repository;
+    private readonly ISliderDomainRepository _repository;
     private readonly IFileService _fileService;
     public async Task<OperationResult> Handle(CreateSliderCommand request, CancellationToken cancellationToken)
     {

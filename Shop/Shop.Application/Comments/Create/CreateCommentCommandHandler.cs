@@ -11,7 +11,7 @@ namespace Shop.Application.Comments.Create
 {
     internal class CreateCommentCommandHandler : IBaseCommandHandler<CreateCommentCommand>
     {
-        private readonly IDomainCommentRepository _repository;
+        private readonly ICommentDomainRepository _repository;
         public async Task<OperationResult> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
             var comment = new Comment(request.UserId, request.Text, request.ProductId);

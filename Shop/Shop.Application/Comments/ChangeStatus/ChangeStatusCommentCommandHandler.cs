@@ -5,9 +5,9 @@ namespace Shop.Application.Comments.ChangeStatus;
 
 internal class ChangeStatusCommentCommandHandler : IBaseCommandHandler<ChangeStatusCommentCommand>
 {
-    private readonly IDomainCommentRepository _repository;
+    private readonly ICommentDomainRepository _repository;
 
-    public ChangeStatusCommentCommandHandler(IDomainCommentRepository repository)
+    public ChangeStatusCommentCommandHandler(ICommentDomainRepository repository)
     {
         _repository = repository;
     }

@@ -7,8 +7,8 @@ namespace Shop.Application.Orders.AddItem;
 
 public class AddItemOrderCommandHandler : IBaseCommandHandler<AddItemOrderCommand>
 {
-    private readonly IDomainOrderRepository _orderRepository;
-    private readonly IDomainSellerRepository _sellerRepository;
+    private readonly IOrderDomainRepository _orderRepository;
+    private readonly ISellerDomainRepository _sellerRepository;
     public async Task<OperationResult> Handle(AddItemOrderCommand request, CancellationToken cancellationToken)
     {
         var inventory = await _sellerRepository.GetInventoryById(request.InventoryId);

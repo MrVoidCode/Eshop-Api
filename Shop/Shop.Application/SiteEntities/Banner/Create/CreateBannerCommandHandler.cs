@@ -7,10 +7,10 @@ namespace Shop.Application.SiteEntities.Banner.Create;
 
 internal class CreateBannerCommandHandler : IBaseCommandHandler<CreateBannerCommand>
 {
-    private readonly IDomainBannerRepository _repository;
+    private readonly IBannerDomainRepository _repository;
     private readonly IFileService _fileService;
 
-    public CreateBannerCommandHandler(IDomainBannerRepository repository, IFileService fileService)
+    public CreateBannerCommandHandler(IBannerDomainRepository repository, IFileService fileService)
     {
         _repository = repository;
         _fileService = fileService;

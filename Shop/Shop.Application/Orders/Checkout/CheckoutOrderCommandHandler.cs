@@ -6,9 +6,9 @@ namespace Shop.Application.Orders.Checkout;
 
 internal class CheckoutOrderCommandHandler : IBaseCommandHandler<CheckoutOrderCommand>
 {
-    private readonly IDomainOrderRepository _repository;
+    private readonly IOrderDomainRepository _repository;
 
-    public CheckoutOrderCommandHandler(IDomainOrderRepository repository)
+    public CheckoutOrderCommandHandler(IOrderDomainRepository repository)
     {
         _repository = repository;
     }

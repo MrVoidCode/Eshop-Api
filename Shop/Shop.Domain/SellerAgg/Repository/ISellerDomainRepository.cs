@@ -7,7 +7,7 @@ using Common.Domain.Repository;
 
 namespace Shop.Domain.SellerAgg.Repository
 {
-    public interface IDomainSellerRepository : IBaseRepository<Seller>
+    public interface ISellerDomainRepository : IBaseRepository<Seller>
     {
         Task<InventoryResult> GetInventoryById(long inventoryId);
 

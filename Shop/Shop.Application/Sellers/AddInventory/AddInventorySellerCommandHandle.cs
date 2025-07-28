@@ -6,9 +6,9 @@ namespace Shop.Application.Sellers.AddInventory;
 
 internal class AddInventorySellerCommandHandle : IBaseCommandHandler<AddInventorySellerCommand>
 {
-    private readonly IDomainSellerRepository _repository;
+    private readonly ISellerDomainRepository _repository;
 
-    public AddInventorySellerCommandHandle(IDomainSellerRepository repository)
+    public AddInventorySellerCommandHandle(ISellerDomainRepository repository)
     {
         _repository = repository;
     }

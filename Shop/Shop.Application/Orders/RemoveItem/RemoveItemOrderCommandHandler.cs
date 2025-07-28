@@ -5,9 +5,9 @@ namespace Shop.Application.Orders.RemoveItem;
 
 internal class RemoveItemOrderCommandHandler : IBaseCommandHandler<RemoveItemOrderCommand>
 {
-    private readonly IDomainOrderRepository _repository;
+    private readonly IOrderDomainRepository _repository;
 
-    public RemoveItemOrderCommandHandler(IDomainOrderRepository repository)
+    public RemoveItemOrderCommandHandler(IOrderDomainRepository repository)
     {
         _repository = repository;
     }

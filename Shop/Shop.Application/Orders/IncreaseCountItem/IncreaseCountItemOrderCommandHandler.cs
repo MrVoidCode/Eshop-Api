@@ -5,9 +5,9 @@ namespace Shop.Application.Orders.IncreaseCountItem;
 
 internal class IncreaseCountItemOrderCommandHandler : IBaseCommandHandler<IncreaseCountItemOrderCommand>
 {
-    private readonly IDomainOrderRepository _repository;
+    private readonly IOrderDomainRepository _repository;
 
-    public IncreaseCountItemOrderCommandHandler(IDomainOrderRepository repository)
+    public IncreaseCountItemOrderCommandHandler(IOrderDomainRepository repository)
     {
         _repository = repository;
     }

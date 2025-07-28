@@ -6,9 +6,9 @@ namespace Shop.Application.Roles.Create;
 
 internal class CreateRoleCommandHandler : IBaseCommandHandler<CreateRoleCommand>
 {
-    private readonly IDomainRoleRepository _repository;
+    private readonly IRoleDomainRepository _repository;
 
-    public CreateRoleCommandHandler(IDomainRoleRepository repository)
+    public CreateRoleCommandHandler(IRoleDomainRepository repository)
     {
         _repository = repository;
     }

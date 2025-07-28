@@ -7,7 +7,7 @@ using Common.Domain.Repository;
 
 namespace Shop.Domain.CommentAgg.Repository
 {
-    public interface IDomainCommentRepository : IBaseRepository<Comment>
+    public interface ICommentDomainRepository : IBaseRepository<Comment>
     {
     }
 }

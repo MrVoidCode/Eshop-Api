@@ -9,10 +9,10 @@ namespace Shop.Application.Products.AddImage;
 
 internal class AddImageProductCommandHandler : IBaseCommandHandler<AddImageProductCommand>
 {
-    private readonly IDomainProductRepository _productRepository;
+    private readonly IProductDomainRepository _productRepository;
     private readonly IFileService _fileService;
 
-    public AddImageProductCommandHandler(IDomainProductRepository productRepository, IFileService fileService)
+    public AddImageProductCommandHandler(IProductDomainRepository productRepository, IFileService fileService)
     {
         _productRepository = productRepository;
         _fileService = fileService;

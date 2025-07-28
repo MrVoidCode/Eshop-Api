@@ -10,11 +10,11 @@ namespace Shop.Application.Products.Edit;
 
 internal class EditProductCommandHandler : IBaseCommandHandler<EditProductCommand>
 {
-    private readonly IDomainProductRepository _productRepository;
+    private readonly IProductDomainRepository _productRepository;
     private readonly IDomainProductService _productService;
     private readonly IFileService _fileService;
 
-    public EditProductCommandHandler(IDomainProductRepository productRepository, IDomainProductService productService, IFileService fileService)
+    public EditProductCommandHandler(IProductDomainRepository productRepository, IDomainProductService productService, IFileService fileService)
     {
         _productRepository = productRepository;
         _productService = productService;

@@ -7,10 +7,10 @@ namespace Shop.Application.Sellers.Create;
 
 internal class CreateSellerCommandHandler : IBaseCommandHandler<CreateSellerCommand>
 {
-    private IDomainSellerRepository _repository;
+    private ISellerDomainRepository _repository;
     private IDomainSellerService service;
 
-    public CreateSellerCommandHandler(IDomainSellerRepository repository)
+    public CreateSellerCommandHandler(ISellerDomainRepository repository)
     {
         _repository = repository;
     }

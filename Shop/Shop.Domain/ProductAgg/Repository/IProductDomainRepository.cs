@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Domain.Repository;
 
-namespace Shop.Domain.SiteEntities.Repository
+namespace Shop.Domain.ProductAgg.Repository
 {
-    public interface IDomainBannerRepository : IBaseRepository<Banner>
+    public interface IProductDomainRepository : IBaseRepository<Product>
     {
     }
 }

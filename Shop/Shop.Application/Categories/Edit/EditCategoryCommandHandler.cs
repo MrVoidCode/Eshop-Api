@@ -13,10 +13,10 @@ namespace Shop.Application.Categories.Edit
 {
     internal class EditCategoryCommandHandler : IBaseCommandHandler<EditCategoryCommand>
     {
-        private readonly IDomainCategoryRepository _repository;
+        private readonly ICategoryDomainRepository _repository;
         private readonly IDomainCategoryService _service;
 
-        public EditCategoryCommandHandler(IDomainCategoryRepository repository, IDomainCategoryService service)
+        public EditCategoryCommandHandler(ICategoryDomainRepository repository, IDomainCategoryService service)
         {
             _repository = repository;
             _service = service;

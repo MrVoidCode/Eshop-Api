@@ -10,8 +10,8 @@ namespace Shop.Application.Comments.Edit
 {
     internal class EditCommentCommandHandler : IBaseCommandHandler<EditCommentCommand>
     {
-        private readonly IDomainCommentRepository _repository;
-        public EditCommentCommandHandler(IDomainCommentRepository repository)
+        private readonly ICommentDomainRepository _repository;
+        public EditCommentCommandHandler(ICommentDomainRepository repository)
         {
             _repository = repository;
         }

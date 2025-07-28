@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Domain.Repository;
 
-namespace Shop.Domain.ProductAgg.Repository
+namespace Shop.Domain.RoleAgg.Repository
 {
-    public interface IDomainProductRepository : IBaseRepository<Product>
+    public interface IRoleDomainRepository : IBaseRepository<Role>
     {
     }
 }
