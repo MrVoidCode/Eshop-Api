@@ -1,17 +1,18 @@
 ﻿using Common.Domain;
 using Common.Domain.Exceptions;
+using MediatR;
 using Shop.Domain.UserAgg.Enums;
+using Shop.Domain.UserAgg.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
-using Shop.Domain.UserAgg.Services;
 
 namespace Shop.Domain.UserAgg
 {
-    internal class User : AggregateRoot
+    public class User : AggregateRoot
     {
         public User(string name, string family, string phoneNumber, string password, string email, Gender gender, IDomainUserService domainService)
         {
@@ -29,6 +30,7 @@ namespace Shop.Domain.UserAgg
         public string PhoneNumber { get; private set; }
         public string Password { get; private set; }
         public string Email { get; private set; }
+        public string Avatar { get; private set; }
         public Gender Gender { get; private set; }
         public List<UserAddress> Addresses { get; set; }
         public List<UserRole> Roles { get; set; }
@@ -64,20 +66,33 @@ namespace Shop.Domain.UserAgg
             }
         }
 
-        public static User RegisterUser(string phoneNumber, string email, string password, IDomainUserService domainService)
+        public static User RegisterUser(string phoneNumber,  string password, IDomainUserService domainService)
         {
-            return new User("", "", phoneNumber, password, email, Gender.None, domainService);
+            return new User("", "", phoneNumber, password,null, Gender.None, domainService);
         }
 
-        public void Edit(string name, string family, string phoneNumber, string email, Gender gender, string avatar, IDomainUserService domainService)
+        public void Edit(string name, string family, string phoneNumber, string email, Gender gender, IDomainUserService domainService)
         {
             Guard(phoneNumber, email, domainService);
             Name = name;
             Family = family;
             PhoneNumber = phoneNumber;
-
             Email = email;
             Gender = gender;
+        }
+        public void EditAddress(long addressId, UserAddress address)
+        {
+            var currentAddress = Addresses.FirstOrDefault(c => c.Id == addressId);
+            if (currentAddress != null)
+            {
+                throw new InvalidDomainDataException("آدرس یافت نشد");
+            }
+            currentAddress.Edit(address.Shire, address.City, address.PostalCode, address.Name,
+                address.LastName
+                , address.PostalAddress, address.PhoneNumber, address.NationalCode);
+
+
+
         }
         public void AddAddress(UserAddress address)
         {
@@ -85,7 +100,12 @@ namespace Shop.Domain.UserAgg
             Addresses.Add(address);
 
         }
+        public void SetAvatarImage(string image)
+        {
+            Avatar = image;
 
+
+        }
         public void RemoveAddress(long addressId)
         {
             var address = Addresses.FirstOrDefault(a => a.Id == addressId);

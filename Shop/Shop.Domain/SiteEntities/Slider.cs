@@ -16,28 +16,32 @@ namespace Shop.Domain.SiteEntities
         public string Link { get; private set; }
         public bool IsActive { get; private set; }
 
-        public Slider(string title, string imageName, string link, bool isActive)
+        public Slider(string title, string imageName, string link)
         {
-            Guard(title, imageName, link);
+            Guard(title, link);
             Title = title;
             ImageName = imageName;
             Link = link;
             IsActive = false;
         }
 
-        public void Guard(string title, string imageName, string link)
+        public void Guard(string title, string link)
         {
             NullOrEmptyDomainDataException.CheckString(title, nameof(title));
-            NullOrEmptyDomainDataException.CheckString(imageName, nameof(imageName));
+            
             NullOrEmptyDomainDataException.CheckString(link, nameof(link));
         }
 
-        public void edit(string title, string imageName, string link)
+        public void Edit(string title, string link)
         {
-            Guard(title, imageName, link);
+            Guard(title,link);
             Title = title;
-            ImageName = imageName;
             Link = link;
+        }
+        public void SetImage(string image)
+        {
+            NullOrEmptyDomainDataException.CheckString(image, nameof(image));
+            ImageName = image;
         }
 
         public void SetActive()

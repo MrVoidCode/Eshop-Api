@@ -7,20 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="SiteEntities\Banner\Create\" />
-    <Folder Include="SiteEntities\Banner\Edit\" />
-    <Folder Include="SiteEntities\Slider\Create\" />
-    <Folder Include="SiteEntities\Slider\Edit\" />
-    <Folder Include="Users\Create\" />
-    <Folder Include="Users\Edit\" />
-    <Folder Include="Users\AddAddress\" />
-    <Folder Include="Users\ChangeWallet\" />
-    <Folder Include="Users\EditAddress\" />
-    <Folder Include="Users\RemoveAddress\" />
-    <Folder Include="Users\Register\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Application\Common.Application.csproj" />
     <ProjectReference Include="..\Shop.Domain\Shop.Domain.csproj" />
   </ItemGroup>
