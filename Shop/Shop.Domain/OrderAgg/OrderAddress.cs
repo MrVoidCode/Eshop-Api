@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Domain;
 
 namespace Shop.Domain.OrderAgg
 {
-    public class OrderAddress
+    public class OrderAddress : BaseEntity
     {
         public OrderAddress(string shire, string city, string postalCode, string name, string lastName, string postalAddress, string phoneNumber, string nationalCode)
         {
