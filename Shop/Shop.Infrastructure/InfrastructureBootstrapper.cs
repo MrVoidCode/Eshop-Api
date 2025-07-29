@@ -23,6 +23,7 @@ using Shop.Domain.RoleAgg.Repository;
 using Shop.Domain.SellerAgg.Repository;
 using Shop.Domain.SiteEntities.Repository;
 using Shop.Domain.UserAgg.Repository;
+using Shop.Infrastructure.Persistent.Dapper;
 
 namespace Shop.Infrastructure
 {
@@ -39,7 +40,9 @@ namespace Shop.Infrastructure
             services.AddTransient<ISliderDomainRepository, SliderRepository>();
             services.AddTransient<IUserDomainRepository, UserRepository>();
             services.AddTransient<ICommentDomainRepository, CommentRepository>();
+            
 
+            services.AddTransient(_ => new DapperContext(connectionString));
             services.AddDbContext<ShopContext>(option =>
             {
                 option.UseSqlServer(connectionString);
