@@ -15,7 +15,7 @@ using Shop.Domain.UserAgg;
 
 namespace Shop.Infrastructure.Persistent.Ef
 {
-    internal class ShopContext : DbContext
+    public class ShopContext : DbContext
     {
         public ShopContext(DbContextOptions<ShopContext> options) : base()
         {
